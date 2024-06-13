@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ImportArticleRequest;
 use App\Http\Resources\ArticleCollection;
 use App\Http\Resources\ArticleResource;
+use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\ResourceCollection;
+
 // use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -11,31 +15,31 @@ class ArticleController extends Controller
     /**
      * Displaying a list of all `Article` resources.
      *
-     * @return \App\Http\Resources\ArticleCollection
+     * @return \Illuminate\Http\Resources\Json\ResourceCollection
      */
-    public function index(): ArticleCollection
+    public function index(): ResourceCollection
     {
         return ArticleCollection::all();
     }
 
-    // /**
-    //  * Store a newly created resource in storage.
-    //  */
-    // public function store(Request $request)
-    // {
-    //     //
-    // }
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function import(ImportArticleRequest $request): JsonResource
+    {
+        return ArticleResource::import($request);
+    }
 
     /**
      * Display the specified `Article` resource.
      *
      * @param string $id article id.
      *
-     * @return \App\Http\Resources\ArticleResource
+     * @return \Illuminate\Http\Resources\Json\JsonResource
      */
-    public function show(string $id): ArticleResource
+    public function show(string $id): JsonResource
     {
-        return ArticleResource::findOrFail($id);
+        return ArticleResource::findById($id);
     }
 
     // /**
