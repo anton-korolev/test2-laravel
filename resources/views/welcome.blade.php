@@ -25,7 +25,44 @@
                 </div>
             </nav>
             <div class="tab-content p-3 border border-top-0 rounded-bottom" id="nav-tabContent">
-                <div class="tab-pane fade show active" id="nav-import" role="tabpanel" aria-labelledby="nav-import-tab" tabindex="0">Импорт</div>
+                <div class="tab-pane fade show active" id="nav-import" role="tabpanel" aria-labelledby="nav-import-tab" tabindex="0">
+
+                    <div class="row g-3">
+
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" placeholder="Ключевое слово" id="importKeyWord">
+                        </div>
+                        <div class="col-md-4">
+                            <button type="button" class="btn btn-light" id="importButton">Импорт</button>
+                            <div class="spinner-border float-end invisible" role="status" id="importSpinner">
+                                <span class="visually-hidden">Загрузка...</span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-8 p-3 border rounded">
+                            <pre id="importResult">
+                            </pre>
+                        </div>
+
+                        <div class="col-md-12 p-3">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Название</th>
+                                        <th scope="col">Ссылка</th>
+                                        <th scope="col">Размер</th>
+                                        <th scope="col">Кол-во слов</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="articleList">
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
                 <div class="tab-pane fade" id="nav-search" role="tabpanel" aria-labelledby="nav-search-tab" tabindex="0">Поиск</div>
             </div>
         </div>
@@ -34,12 +71,13 @@
     <footer id="footer" class="py-3 bg-light">
         <div class="container">
             <div class="row text-muted">
-                <div class="col-md-6 text-center text-md-start">&copy; Антон Королев 2024</div>
+                <div class="col-md-6 text-center text-md-start">&copy; Антон Королёв 2024</div>
             </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="/js/main.js"></script>
 </body>
 
 </html>
