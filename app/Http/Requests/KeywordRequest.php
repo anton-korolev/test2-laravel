@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 // use Illuminate\Validation\ValidationException;
 
-class ImportArticleRequest extends FormRequest
+class KeywordRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

@@ -2,7 +2,7 @@
 
 namespace App\Http\Resources;
 
-use App\Http\Requests\ImportArticleRequest;
+use App\Http\Requests\KeywordRequest;
 use App\Models\Article;
 use App\Models\WordProcessor;
 use App\Services\WikiParser\WikiParser;
@@ -36,7 +36,7 @@ class ArticleResource extends JsonResource
      *
      * @return static|\App\Http\Resources\ArticleErrorResource
      */
-    public static function import(ImportArticleRequest $request): static|ArticleErrorResource
+    public static function import(KeywordRequest $request): static|ArticleErrorResource
     {
         $startTime = microtime(true);
         $wordCount = 0;
