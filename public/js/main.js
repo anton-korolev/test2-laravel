@@ -10,7 +10,6 @@ async function fethArticleList(event) {
             response.json().then(text => {
                 var rows = '';
                 var num = 1;
-                console.log(text.data);
                 for(var row in text.data) {
                     row = text.data[row];
                     rows = rows + `
@@ -27,9 +26,6 @@ async function fethArticleList(event) {
         }
     })
 }
-
-
-
 
 async function importArticle(event) {
     const keyWord = document.getElementById('importKeyWord').value;
@@ -51,8 +47,62 @@ async function importArticle(event) {
                     + 'Название: ' + text.data.articleTitle + "\n"
                     + 'Размер: ' + text.data.articleSize + '\n'
                     + 'Кол-во слов: ' + text.data.wordCount + '\n'
-                     + 'Время импорта: ' + text.data.elapsedTime;
+                    + 'Время импорта: ' + text.data.elapsedTime;
                 fethArticleList(event);
+            });
+        }
+    })
+}
+
+async function loadArticle(id) {
+    const articleText = document.getElementById('articleText');
+
+    fetch('/articles/' + id
+    )
+    .then(response => {
+        if (!response.ok) {
+            console.log('Произошла ошибка:', response.status);
+            articleText.textContent = 'Произошла ошибка: ' + response.status;
+        } else {
+            response.json().then(text => {
+                if (text?.error) {
+                    articleText.textContent = text.error.message;
+                } else {
+                    articleText.textContent = text.data.content;
+                }
+            });
+        }
+    })
+}
+
+
+
+async function searchArticle(event) {
+    const keyWord = document.getElementById('searchKeyWord').value;
+    const searchTitle = document.getElementById('searchTitle');
+    const searchResult = document.getElementById('searchResult');
+    const articleText = document.getElementById('articleText');
+
+    fetch('/search?keyword=' + keyWord
+    )
+    .then(response => {
+        if (!response.ok) {
+            console.log('Произошла ошибка:', response.status);
+            response.json().then(text => {
+                searchTitle.textContent = text;
+                searchResult.textContent = '';
+                articleText.textContent = '';
+            });
+        } else {
+            response.json().then(text => {
+                var result = '';
+                searchTitle.textContent = text.data.title;
+                for(var row in text.data.results) {
+                    row = text.data.results[row];
+                    result +=
+                        `<p><a href="#" onclick='loadArticle(${row.id})'>${row.title}</a> (вхождений: ${row.count})</a>\n`
+                }
+                searchResult.innerHTML = result;
             });
         }
     })
@@ -61,3 +111,5 @@ async function importArticle(event) {
 fethArticleList();
 const importButton = document.getElementById('importButton');
 importButton.onclick = importArticle;
+const searchButton = document.getElementById('searchButton');
+searchButton.onclick = searchArticle;

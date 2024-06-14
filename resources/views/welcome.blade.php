@@ -24,6 +24,8 @@
                     <button class="nav-link" id="nav-search-tab" data-bs-toggle="tab" data-bs-target="#nav-search" type="button" role="tab" aria-controls="nav-search" aria-selected="false">Поиск</button>
                 </div>
             </nav>
+
+            <!-- Импорт -->
             <div class="tab-content p-3 border border-top-0 rounded-bottom" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="nav-import" role="tabpanel" aria-labelledby="nav-import-tab" tabindex="0">
 
@@ -44,7 +46,7 @@
                             </pre>
                         </div>
 
-                        <div class="col-md-12 p-3">
+                        <div class="col-12 p-3">
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
@@ -63,7 +65,34 @@
                     </div>
 
                 </div>
-                <div class="tab-pane fade" id="nav-search" role="tabpanel" aria-labelledby="nav-search-tab" tabindex="0">Поиск</div>
+
+                <!-- Поиск -->
+                <div class="tab-pane fade" id="nav-search" role="tabpanel" aria-labelledby="nav-search-tab" tabindex="0">
+
+                    <div class="row g-3">
+
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" placeholder="Ключевое слово" id="searchKeyWord">
+                        </div>
+                        <div class="col-md-4">
+                            <button type="button" class="btn btn-light" id="searchButton">Найти</button>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="mb-3" id="searchTitle">
+                            </div>
+                            <div id="searchResult">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <textarea class="form-control border" id="articleText" rows="20">
+                            </textarea>
+                        </div>
+
+                    </div>
+
+                </div>
             </div>
         </div>
     </main>
