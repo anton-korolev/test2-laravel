@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ImportArticleRequest;
-use App\Http\Resources\ArticleCollection;
+use App\Http\Resources\ArticleListResource;
 use App\Http\Resources\ArticleResource;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Http\Resources\Json\ResourceCollection;
 
 // use Illuminate\Http\Request;
 
@@ -17,9 +16,9 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Resources\Json\ResourceCollection
      */
-    public function index(): ResourceCollection
+    public function index(): JsonResource
     {
-        return ArticleCollection::all();
+        return ArticleListResource::list();
     }
 
     /**
